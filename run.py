@@ -1,7 +1,4 @@
-from app.services.injestion import load_file, chunk_documents
-from pathlib import Path
+import uvicorn
 
-docs=load_file(Path("data/sample_Kb_data/company_handbook.md"))
-docs=chunk_documents(docs)
-
-print(docs)
+if __name__ == "__main__":
+    uvicorn.run("app.main:app", host="127.0.0.1", port=8080, reload=True)

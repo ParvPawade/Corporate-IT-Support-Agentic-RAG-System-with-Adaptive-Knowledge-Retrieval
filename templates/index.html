@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IT Help Desk Copilot</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <h1>IT Help Desk Copilot</h1>
+  <label class="demo"><input type="checkbox" id="demo" checked> Demo mode (no backend)</label>
+</header>
+
+<main class="layout">
+  <section class="chat" aria-label="Conversation">
+    <div id="messages" class="messages" aria-live="polite">
+      <div class="msg bot"><div class="bubble">Hi, I can help with VPN, passwords, MFA, laptops, email and software access. What's going wrong?</div></div>
+    </div>
+    <div class="examples" id="examples">
+      <button type="button">How do I reset my password?</button>
+      <button type="button">VPN keeps disconnecting on my laptop</button>
+      <button type="button">How do I configure Okta Verify on a new phone?</button>
+      <button type="button">hello</button>
+    </div>
+    <form id="form" class="composer">
+      <input id="question" type="text" placeholder="Describe your IT problem" autocomplete="off" required>
+      <button id="send" type="submit">Ask</button>
+    </form>
+  </section>
+
+  <aside class="side" aria-label="How the answer was found">
+    <h2>How it answered</h2>
+    <p class="hint" id="traceHint">Steps the assistant took will show here after you ask a question.</p>
+    <ol id="trace" class="trace"></ol>
+    <div id="sourceBox" class="sources" hidden>
+      <h3>Sources</h3>
+      <ul id="sources"></ul>
+    </div>
+    <details class="settings">
+      <summary>Backend settings</summary>
+      <label>API URL
+        <input id="apiUrl" type="text" value="http://localhost:8000/api/ask">
+      </label>
+      <p class="hint">Expects POST {"question": "..."} and returns {answer, source_used, citations, trace}.</p>
+    </details>
+  </aside>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
